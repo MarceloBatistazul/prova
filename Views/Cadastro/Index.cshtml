@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Avalicao.Models.CadastroCliente>
+
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+<h1>Clientes</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Adicionar Cliente</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Cep) <!-- Correção de maiúsculas -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Rua) <!-- Correção de maiúsculas -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Numero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Bairro) <!-- Correção de maiúsculas -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Cidade) <!-- Correção de maiúsculas -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Estado) <!-- Correção de maiúsculas -->
+            </th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Nome
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+                    <td>
+                        @item.Telefone
+                    </td>
+                    <td>
+                        @item.Cep <!-- Correção de maiúsculas -->
+                    </td>
+                    <td>
+                        @item.Rua <!-- Correção de maiúsculas -->
+                    </td>
+                    <td>
+                        @item.Numero
+                    </td>
+                    <td>
+                        @item.Bairro <!-- Correção de maiúsculas -->
+                    </td>
+                    <td>
+                        @item.Cidade <!-- Correção de maiúsculas -->
+                    </td>
+                    <td>
+                        @item.Estado <!-- Correção de maiúsculas -->
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">
+                            Editar
+                        </a>
+                        <a class="btn btn-outline-info btn-sm" asp-action="Details" asp-route-id="@item.Id">
+                            Detalhes
+                        </a>
+                        <a class="btn btn-outline-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">
+                            Apagar
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="10" class="text-center">Nenhum cliente encontrado.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
